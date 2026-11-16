@@ -1,0 +1,21 @@
+name: Python Unit Tests
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    name: Run pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reepository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pytest
+        run: python -m pip instal pytest
+      - name: Run unit tests
+        run: python -m pytest -q
